@@ -12,40 +12,73 @@ const gameState = {
   ],
 };
 
+// Board Set-up
 function makeGrid(size) {
   for (let i = 0; i < size; i++) {
     const row = document.createElement("tr");
     for (let j = 0; j < size; j++) {
       const cell = document.createElement("td");
       cell.innerText = null;
+      cell.setAttribute("id", `row ${i} cell ${j}`);
       row.append(cell);
     }
+    row.setAttribute("id", `row ${i}`);
     board.appendChild(row);
   }
 }
 makeGrid(3);
 
+// Player Set-up & Playing
 let playerOne = true;
 
 board.addEventListener("click", (event) => {
   const target = event.target;
-  if (target.innerText == "") {
-    if (playerOne == true) {
-      target.innerHTML = "X";
-      playerOne = false;
+  if (target.tagName === "TD") {
+    if ((event, target.innerText == "")) {
+      if (playerOne == true) {
+        target.innerHTML = "X";
+        playerOne = false;
+      } else {
+        target.innerHTML = "O";
+        playerOne = true;
+      }
     } else {
-      target.innerHTML = "O";
-      playerOne = true;
+      alert("This is already occupied.");
     }
   } else {
     alert("Not Available");
   }
 });
 
-// const winningPossibility = []
+// Winning Possibilities
+let allCell = [];
+let rowNum = [];
+for (const child of board.children) {
+  rowNum.push(child);
+}
+for (i = 0; i < rowNum.length; i++) {
+  let current = rowNum[i];
+  let Num = [];
+  for (const childOf of current.children) {
+    Num.push(childOf);
+  }
+  allCell.push(Num);
+}
 
-// for (i=0; i < horizontal.length; i++){
-    
-// }
+let winningPossibility = [];
 
-console.log(board)
+// Horizontal
+for (i = 0; i < allCell.length; i++) {
+  winningPossibility.push(allCell[i]);
+}
+// Vertical
+for (i = 0; i < allCell.length; i++) {
+  hold = [];
+  for (j = 0; j < allCell.length; j++) {
+    hold.push(allCell[j][i]);
+  }
+  winningPossibility.push(hold);
+}
+//Diagonal
+
+console.log(winningPossibility);
