@@ -30,6 +30,8 @@ makeGrid(3);
 
 // Player Set-up & Playing
 let playerOne = true;
+let play1 = []
+let play2 = []
 
 board.addEventListener("click", (event) => {
   const target = event.target;
@@ -37,9 +39,11 @@ board.addEventListener("click", (event) => {
     if ((event, target.innerText == "")) {
       if (playerOne == true) {
         target.innerHTML = "X";
+        play1.push(target)
         playerOne = false;
       } else {
         target.innerHTML = "O";
+        play2.push(target)
         playerOne = true;
       }
     } else {
@@ -49,6 +53,9 @@ board.addEventListener("click", (event) => {
     alert("Not Available");
   }
 });
+
+console.log(play1)
+console.log(play2)
 
 // Winning Possibilities
 let allCell = [];
@@ -68,17 +75,33 @@ for (i = 0; i < rowNum.length; i++) {
 let winningPossibility = [];
 
 // Horizontal
-for (i = 0; i < allCell.length; i++) {
+for (let i = 0; i < allCell.length; i++) {
   winningPossibility.push(allCell[i]);
 }
 // Vertical
-for (i = 0; i < allCell.length; i++) {
-  hold = [];
-  for (j = 0; j < allCell.length; j++) {
+for (let i = 0; i < allCell.length; i++) {
+  let hold = [];
+  for (let j = 0; j < allCell.length; j++) {
     hold.push(allCell[j][i]);
   }
   winningPossibility.push(hold);
 }
 //Diagonal
+let temp = [];
+for (let i = 0; i < allCell.length; i++) {
+  temp.push(allCell[i][i]);
+}
+winningPossibility.push(temp);
 
-console.log(winningPossibility);
+let temp2 = [];
+for (let i = 0; i < allCell.length; i++) {
+    for (let j = 0; j < allCell.length; j++) {
+        if(i + j == allCell.length - 1){
+            temp2.push(allCell[i][j])
+        }
+        else {
+            continue
+        }
+    }
+}
+winningPossibility.push(temp2);
