@@ -11,12 +11,22 @@
 </head>
 <body>
     <h1 class="title">Tic-Tac-Toe</h1>
+    <!-- <label>Select board size:</label>
+    <select id="board-size" size="1">
+        <option value="">--Select board size--</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+    </select> -->
+    <!-- <button type="'button" onclick="changeValue()">Play</button> -->
     <div class="player-info">
-        <label for="player1">Player 1 (X):</label>
-        <input type="text" class="player-name1">
-        <label for="player2">Player 2 (O):</label>
-        <input type="text" class="player-name2">
-        <input type="submit" value="Start">
+        <span for="player1">Player 1 (X):
+            <span id = "player1_name"></span>
+        </span>
+        <span for="player2">Player 2 (O):
+            <span id="player2_name"></span>
+        </span>
     </div>
     <div id="board"></div>
 </body>
