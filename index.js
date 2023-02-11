@@ -40,12 +40,12 @@ switch (name2) {
 }
 
 // Board Set-up
-let boardSize = prompt("How big should the board be? [choices: 3, 4, 5]", '3')
-switch(boardSize) {
-    case null:
-        makeGrid(3)
-    default:
-        makeGrid(Number(boardSize))
+let boardSize = prompt("How big should the board be? [choices: 3, 4, 5]", "3");
+switch (boardSize) {
+  case null:
+    makeGrid(3);
+  default:
+    makeGrid(Number(boardSize));
 }
 
 function makeGrid(size) {
@@ -67,25 +67,40 @@ let playerOne = true;
 let play1_id = [];
 let play2_id = [];
 
+let counter = 0;
 board.addEventListener("click", (event) => {
   const target = event.target;
   if (target.tagName === "TD") {
-    if ((target.innerText == "")) {
+    if (target.innerText == "") {
       if (playerOne == true) {
         target.innerHTML = "X";
+        counter += 1;
         play1_id.push(target.id);
-        console.log(play1_id)
-        console.log(checkWin(play1_id))
         if (checkWin(play1_id).includes(Number(boardSize))) {
-            alert ("Player 1 won!")
-        }   
+          alert("Player 1 won!");
+          board.innerHTML = "";
+          makeGrid(Number(boardSize))
+        }
+        if (counter === Math.pow(Number(boardSize), 2)) {
+          alert("It's a tie!");
+          board.innerHTML = "";
+          makeGrid(Number(boardSize))
+        }
         playerOne = false;
       } else {
         target.innerHTML = "O";
+        counter += 1;
         play2_id.push(target.id);
         if (checkWin(play2_id).includes(Number(boardSize))) {
-            alert ("Player 2 won!")
-        }   
+          alert("Player 2 won!");
+          board.innerHTML = "";
+          makeGrid(Number(boardSize))
+        }
+        if (counter === Math.pow(Number(boardSize), 2)) {
+          alert("It's a tie!");
+          board.innerHTML = "";
+          makeGrid(Number(boardSize))
+        }
         playerOne = true;
       }
     } else {
@@ -157,14 +172,17 @@ while (holding.length > 0) {
 }
 
 // Check for winning
-function checkWin (arr) {
-    const collection = []
-    for (i=0; i < arr.length; i++) {
-        cur = arr[i]
-        const found = winningPossibility_id.filter((e) => e.includes(arr[i]))
-        collection.push(found)
-    }
-    const progress =  collection.flat(1)
-    const elementCount = progress.reduce((count, e) => (count[e] = count[e] + 1 || 1,count), {})
-    return Object.values(elementCount)
+function checkWin(arr) {
+  const collection = [];
+  for (i = 0; i < arr.length; i++) {
+    cur = arr[i];
+    const found = winningPossibility_id.filter((e) => e.includes(arr[i]));
+    collection.push(found);
+  }
+  const progress = collection.flat(1);
+  const elementCount = progress.reduce(
+    (count, e) => ((count[e] = count[e] + 1 || 1), count),
+    {}
+  );
+  return Object.values(elementCount);
 }
