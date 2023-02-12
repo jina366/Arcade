@@ -1,14 +1,38 @@
 body {
     background-color: bisque;
 }
+.top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(196, 196, 196, 0.776);
+    border: 2px white dotted;
+}
+h1 {
+    font-family: 'Itim', cursive;
+    font-size: 50px;
+    margin: 10px;
+}
+.restart-button {
+    position: relative;
+    object-position: right;
+    font-size: 15px;
+    width: 80px;
+    height: 30px;
+    border-radius: 12px;
+    background-color: #e7e7e7;
 
+}
 .player-info {
     display: flex;
     justify-content: space-around;
+    font-family: 'Itim', cursive;
+    padding-top: 20px;
 }
-
-.hidden {
-    display:none;
+#player1_name,
+#player2_name {
+    font-size: 30px;
+    color:blue;
 }
 
 #board {
@@ -24,17 +48,9 @@ td {
     height: 100px;
     text-align: center;
     vertical-align: middle;
+    font-family: 'Mogra', cursive;
+    font-size: 50px;
 }
-
-/* td:nth-child(2){
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-}
-
-tr:nth-child(2) {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-} */
 
 td {
     border-left: 2px solid black;
