@@ -65,6 +65,7 @@ switch (playComputer) {
 
     let counter1 = 0;
     let counter2 = 0;
+    let totCounter = 0;
     board.addEventListener("click", (event) => {
       const target = event.target;
       if (target.tagName === "TD") {
@@ -72,51 +73,57 @@ switch (playComputer) {
           if (playerOne == true) {
             target.innerHTML = "X";
             counter1 += 1;
+            totCounter += 1;
             play1_id.push(target.id);
-            playerOne = false
+            playerOne = false;
             if (checkWin(play1_id).includes(Number(boardSize))) {
               alert(`${player1.innerText} won!`);
               board.innerHTML = "";
               counter1 = 0;
               counter2 = 0;
-              play1_id = []
-              play2_id = []
-              playerOne = true
+              totCounter = 0;
+              play1_id = [];
+              play2_id = [];
+              playerOne = true;
               makeGrid(Number(boardSize));
             }
-            if (counter1 === Math.pow(Number(boardSize), 2)) {
+            if (totCounter === Math.pow(Number(boardSize), 2)) {
               alert("It's a tie!");
               board.innerHTML = "";
               counter1 = 0;
               counter2 = 0;
-              play1_id = []
-              play2_id = []
-              playerOne = true
+              totCounter = 0;
+              play1_id = [];
+              play2_id = [];
+              playerOne = true;
               makeGrid(Number(boardSize));
             }
           } else if (playerOne == false) {
             target.innerHTML = "O";
             counter2 += 1;
+            totCounter += 1;
             play2_id.push(target.id);
-            playerOne = true
+            playerOne = true;
             if (checkWin(play2_id).includes(Number(boardSize))) {
               alert(`${player2.innerText} won!`);
               board.innerHTML = "";
               counter1 = 0;
               counter2 = 0;
-              play1_id = []
-              play2_id = []
-              playerOne = true
+              totCounter = 0;
+              play1_id = [];
+              play2_id = [];
+              playerOne = true;
               makeGrid(Number(boardSize));
             }
-            if (counter2 === Math.pow(Number(boardSize), 2)) {
+            if (totCounter === Math.pow(Number(boardSize), 2)) {
               alert("It's a tie!");
               board.innerHTML = "";
               counter1 = 0;
               counter2 = 0;
-              play1_id = []
-              play2_id = []
-              playerOne = true
+              totCounter = 0;
+              play1_id = [];
+              play2_id = [];
+              playerOne = true;
               makeGrid(Number(boardSize));
             }
           }
@@ -147,6 +154,9 @@ switch (playComputer) {
             alert(`${name1} won!`);
             board.innerHTML = "";
             counterCom1 = 0;
+            counterCom2 = 0;
+            play1Com_id = [];
+            play2Com_id = [];
             makeGrid(Number(boardSize));
             return;
           }
@@ -154,6 +164,9 @@ switch (playComputer) {
             alert("It's a tie!");
             board.innerHTML = "";
             counterCom1 = 0;
+            counterCom2 = 0;
+            play1Com_id = [];
+            play2Com_id = [];
             makeGrid(Number(boardSize));
             return;
           }
@@ -172,16 +185,22 @@ switch (playComputer) {
       if (checkWin(play2Com_id).includes(Number(boardSize))) {
         alert(`Computer won!`);
         board.innerHTML = "";
+        counterCom1 = 0;
         counterCom2 = 0;
+        play1Com_id = [];
+        play2Com_id = [];
         makeGrid(Number(boardSize));
       }
       if (counterCom2 === Math.pow(Number(boardSize), 2)) {
         alert("It's a tie!");
         board.innerHTML = "";
+        counterCom1 = 0;
         counterCom2 = 0;
+        play1Com_id = [];
+        play2Com_id = [];
         makeGrid(Number(boardSize));
       }
-        compTurn = false;
+      compTurn = false;
     });
 }
 
