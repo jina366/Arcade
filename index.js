@@ -5,16 +5,6 @@ const space = document.getElementsByTagName("td");
 const horizontal = document.getElementsByTagName("tr");
 const numInput = document.querySelector("#board-size");
 
-function boardReset() {
-  playerOne = true;
-  play1_id = [];
-  play2_id = [];
-  counter = 0;
-  board.innerHTML = null;
-  player1 = true;
-  makeGrid(Number(boardSize));
-}
-
 // Determine who goes first
 let playComputer = false;
 const names = [];
@@ -73,49 +63,62 @@ switch (playComputer) {
     let play1_id = [];
     let play2_id = [];
 
-    let counter = 0;
+    let counter1 = 0;
+    let counter2 = 0;
     board.addEventListener("click", (event) => {
       const target = event.target;
       if (target.tagName === "TD") {
         if (target.innerHTML == "") {
           if (playerOne == true) {
             target.innerHTML = "X";
-            counter += 1;
+            counter1 += 1;
             play1_id.push(target.id);
+            playerOne = false
             if (checkWin(play1_id).includes(Number(boardSize))) {
-              alert(`${name1} won!`);
+              alert(`${player1.innerText} won!`);
               board.innerHTML = "";
-              counter = 0;
+              counter1 = 0;
+              counter2 = 0;
+              play1_id = []
+              play2_id = []
               playerOne = true
               makeGrid(Number(boardSize));
             }
-            if (counter === Math.pow(Number(boardSize), 2)) {
+            if (counter1 === Math.pow(Number(boardSize), 2)) {
               alert("It's a tie!");
               board.innerHTML = "";
-              counter = 0;
+              counter1 = 0;
+              counter2 = 0;
+              play1_id = []
+              play2_id = []
               playerOne = true
               makeGrid(Number(boardSize));
             }
-            playerOne = false;
           } else if (playerOne == false) {
             target.innerHTML = "O";
-            counter += 1;
+            counter2 += 1;
             play2_id.push(target.id);
+            playerOne = true
             if (checkWin(play2_id).includes(Number(boardSize))) {
-              alert(`${name2} won!`);
+              alert(`${player2.innerText} won!`);
               board.innerHTML = "";
-              counter = 0;
+              counter1 = 0;
+              counter2 = 0;
+              play1_id = []
+              play2_id = []
               playerOne = true
               makeGrid(Number(boardSize));
             }
-            if (counter === Math.pow(Number(boardSize), 2)) {
+            if (counter2 === Math.pow(Number(boardSize), 2)) {
               alert("It's a tie!");
               board.innerHTML = "";
-              counter = 0;
+              counter1 = 0;
+              counter2 = 0;
+              play1_id = []
+              play2_id = []
               playerOne = true
               makeGrid(Number(boardSize));
             }
-            playerOne = true;
           }
         } else {
           alert("This is already occupied.");
