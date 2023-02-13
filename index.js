@@ -72,6 +72,8 @@ switch (playComputer) {
         if (target.innerHTML == "") {
           if (playerOne == true) {
             target.innerHTML = "X";
+            target.style.backgroundColor = "#e57200";
+            target.style.color = "white";
             counter1 += 1;
             totCounter += 1;
             play1_id.push(target.id);
@@ -79,6 +81,7 @@ switch (playComputer) {
             if (checkWin(play1_id).includes(Number(boardSize))) {
               alert(`${player1.innerText} won!`);
               board.innerHTML = "";
+              board.style = "";
               counter1 = 0;
               counter2 = 0;
               totCounter = 0;
@@ -90,6 +93,7 @@ switch (playComputer) {
             if (totCounter === Math.pow(Number(boardSize), 2)) {
               alert("It's a tie!");
               board.innerHTML = "";
+              board.style = "";
               counter1 = 0;
               counter2 = 0;
               totCounter = 0;
@@ -100,6 +104,8 @@ switch (playComputer) {
             }
           } else if (playerOne == false) {
             target.innerHTML = "O";
+            target.style.backgroundColor = "navy";
+            target.style.color = "white";
             counter2 += 1;
             totCounter += 1;
             play2_id.push(target.id);
@@ -107,6 +113,7 @@ switch (playComputer) {
             if (checkWin(play2_id).includes(Number(boardSize))) {
               alert(`${player2.innerText} won!`);
               board.innerHTML = "";
+              board.style = "";
               counter1 = 0;
               counter2 = 0;
               totCounter = 0;
@@ -118,6 +125,7 @@ switch (playComputer) {
             if (totCounter === Math.pow(Number(boardSize), 2)) {
               alert("It's a tie!");
               board.innerHTML = "";
+              board.style = "";
               counter1 = 0;
               counter2 = 0;
               totCounter = 0;
@@ -148,11 +156,14 @@ switch (playComputer) {
       if (target.tagName === "TD") {
         if (target.innerHTML == "") {
           target.innerHTML = "X";
+          target.style.backgroundColor = "#e57200";
+          target.style.color = "white";
           counterCom1 += 1;
           play1Com_id.push(target.id);
           if (checkWin(play1Com_id).includes(Number(boardSize))) {
             alert(`${name1} won!`);
             board.innerHTML = "";
+            board.style = "";
             counterCom1 = 0;
             counterCom2 = 0;
             play1Com_id = [];
@@ -163,6 +174,7 @@ switch (playComputer) {
           if (counterCom1 === Math.pow(Number(boardSize), 2)) {
             alert("It's a tie!");
             board.innerHTML = "";
+            board.style = "";
             counterCom1 = 0;
             counterCom2 = 0;
             play1Com_id = [];
@@ -181,10 +193,13 @@ switch (playComputer) {
       }
       randomEl = available[Math.floor(Math.random() * available.length)];
       randomEl.innerHTML = "O";
+      randomEl.style.backgroundColor = "navy";
+      randomEl.style.color = "white";
       play2Com_id.push(randomEl.id);
       if (checkWin(play2Com_id).includes(Number(boardSize))) {
         alert(`Computer won!`);
         board.innerHTML = "";
+        board.style = "";
         counterCom1 = 0;
         counterCom2 = 0;
         play1Com_id = [];
@@ -194,6 +209,7 @@ switch (playComputer) {
       if (counterCom2 === Math.pow(Number(boardSize), 2)) {
         alert("It's a tie!");
         board.innerHTML = "";
+        board.style = "";
         counterCom1 = 0;
         counterCom2 = 0;
         play1Com_id = [];

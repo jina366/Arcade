@@ -1,67 +1,65 @@
 body {
-    background-color: bisque;
+  background-color: aliceblue;
 }
 .top {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgba(196, 196, 196, 0.776);
-    border: 2px white dotted;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(196, 196, 196, 0.776);
+  border: 2px white dotted;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 h1 {
-    font-family: 'Itim', cursive;
-    font-size: 50px;
-    margin: 10px;
+  font-family: "Itim", cursive;
+  font-size: 50px;
+  margin: 15px;
 }
-.restart-button {
-    position: relative;
-    object-position: right;
-    font-size: 15px;
-    width: 80px;
-    height: 30px;
-    border-radius: 12px;
-    background-color: #e7e7e7;
 
-}
 .player-info {
-    display: flex;
-    justify-content: space-around;
-    font-family: 'Itim', cursive;
-    padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Itim", cursive;
+  padding-top: 20px;
 }
-#player1_name,
+#player1_name {
+  font-size: 40px;
+  color: #e57200;
+  padding-left: 10px;
+}
 #player2_name {
-    font-size: 30px;
-    color:blue;
+  font-size: 40px;
+  color: navy;
+  padding-left: 10px;
 }
 
 #board {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    padding: 30px;
-    padding-top: 100px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 30px;
 }
 
 td {
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    vertical-align: middle;
-    font-family: 'Mogra', cursive;
-    font-size: 50px;
-}
-
-td {
-    border-left: 2px solid black;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Mogra", cursive;
+  font-size: 90px;
+  border: 2px solid gray;
 }
 td:first-child {
-    border-left: 0px;
+  border-left: 4px solid gray;
+}
+td:last-child {
+  border-right: 4px solid gray;
 }
 
-tr {
-    border-top: 2px solid black;
-}
 tr:first-child {
-    border-top: 0px;
+  border-top: 2px solid gray;
+}
+tr:last-child {
+  border-bottom: 2px solid gray;
 }
